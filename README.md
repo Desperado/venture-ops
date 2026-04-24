@@ -1,21 +1,31 @@
 # Venture-Ops
 
-Venture-Ops is an AI fundraising command center for founders: investor discovery, accelerator targeting, pitch-deck refresh, application drafting, pipeline tracking, and market-aware fundraising ops.
+Venture-Ops is an AI fundraising command center for founders: investor discovery, pitch-deck refresh, application drafting, pipeline tracking, and market-aware fundraising ops.
 
 It is a sibling project to `career-ops`, but aimed at startup fundraising instead of job search.
 
-Instead of tracking investor conversations in random docs, rebuilding your deck by hand every month, and spraying applications everywhere, you get a structured fundraising system that:
+Instead of juggling old decks, scattered investor notes, and generic applications, you get one structured system that helps you:
 
-- **finds targets** that match your stage, geography, and sector
-- **scores investor fit** before you waste founder time
-- **generates deck/memo/application material** tailored to specific funds and programs
-- **refreshes your narrative** from existing decks, website changes, and founder updates
-- **tracks outreach and follow-ups** in one auditable pipeline
-- **monitors trends and news** so the story stays current instead of drifting stale
+- find investors and programs that actually fit your company
+- refresh your story when the deck, website, and product drift apart
+- spot what is missing before a founder call or partner meeting
+- prepare cleaner outreach, applications, and follow-ups
+- keep a live fundraising memory instead of starting from zero every week
 
-> **Important:** Venture-Ops is not an autobot for investor spam. It is a filter and sharpening system. It helps you choose the best targets, tighten the story, and prepare better materials. You still decide what gets sent.
+> **Important:** Venture-Ops is not an investor-spam bot. It is a sharpening system. It helps founders choose better targets, tighten the story, and prepare better materials. The founder still decides what gets sent.
 
-## What Is This
+## At A Glance
+
+![Venture-Ops overview](assets/readme/venture-ops-overview.png)
+
+In plain English:
+
+1. You give the system your current deck, website, founder context, and goals.
+2. It compares those inputs, finds what is stale or missing, and checks which investors fit.
+3. It asks focused follow-up questions where the story is still weak.
+4. It gives you refreshed materials, a ranked target list, and a pipeline to work through.
+
+## What This Tool Does
 
 Venture-Ops turns any AI coding CLI into a founder-side fundraising operating system.
 
@@ -23,39 +33,130 @@ It is designed for founders who need to:
 
 - raise a pre-seed, seed, or early institutional round
 - apply to accelerators, founder programs, studios, or grants
-- maintain an up-to-date pitch deck and memo without constant manual rewrites
-- identify which VCs actually fit the company
-- ask better “what is missing in this deck?” questions
-- keep a structured memory of traction, proof points, and investor objections
+- keep a pitch deck current without rewriting it from scratch every month
+- understand which VCs are a real fit and which are a waste of time
+- prepare target-specific application answers and intro blurbs
+- maintain a structured memory of traction, proof points, risks, and investor objections
 
 The system is agentic: it can inspect your public startup site, compare it to your current deck, identify what is stale, suggest sharper proof, and prepare target-specific material for the next conversation.
 
+## What You Put In
+
+Even a non-technical founder can think of Venture-Ops as a very organized analyst.
+
+You feed it:
+
+- your current deck
+- your website
+- founder background
+- traction notes
+- target round and geography
+- a curated investor list or a few URLs to start from
+
+## What You Get Out
+
+You get back:
+
+- a deck refresh audit
+- a ranked investor shortlist
+- founder follow-up questions
+- target-specific outreach/application drafts
+- a tracker of who to contact and when
+- a market/news memory that helps keep the story current
+
+## Sanitized Real Example
+
+Below is a sanitized example derived from a real founder deck and public company website. Sensitive numbers, customer details, and internal claims are intentionally replaced with placeholders.
+
+![Sanitized deck intake example](assets/readme/deck-intake-sanitized.png)
+
+What Venture-Ops did with that real case:
+
+- pulled the current deck into structured notes
+- checked the front page and public founder profile
+- found narrative drift between deck and website
+- flagged diligence gaps before investor send
+- produced a fresh deck draft and a target shortlist
+
+## Live VC Search Example
+
+This is a visual snapshot from a real live search run on **April 24, 2026** for a European pre-seed AI testing / developer infrastructure company.
+
+![Live VC search snapshot](assets/readme/live-vc-summary.png)
+
+Why this matters for a non-technical founder:
+
+- you are not starting from a blank sheet
+- the tool narrows the field to a small shortlist with reasons
+- it gives you the "why this firm" angle before you write to anyone
+
+## Official Site Snapshots
+
+These are the actual official websites Venture-Ops used in that live search.
+
+<table>
+  <tr>
+    <td align="center"><img src="assets/readme/crane-home.jpg" alt="Crane Venture Partners" width="100%"><br><sub>Crane Venture Partners</sub></td>
+    <td align="center"><img src="assets/readme/point-nine-home.jpg" alt="Point Nine" width="100%"><br><sub>Point Nine</sub></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="assets/readme/seedcamp-home.jpg" alt="Seedcamp" width="100%"><br><sub>Seedcamp</sub></td>
+    <td align="center"><img src="assets/readme/frontline-home.jpg" alt="Frontline Seed" width="100%"><br><sub>Frontline Seed</sub></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="assets/readme/playfair-home.jpg" alt="Playfair" width="100%"><br><sub>Playfair</sub></td>
+    <td align="center"><img src="assets/readme/episode1-home.jpg" alt="Episode 1" width="100%"><br><sub>Episode 1</sub></td>
+  </tr>
+</table>
+
+Live sources:
+
+- [Crane Venture Partners](https://crane.vc/)
+- [Point Nine](https://www.pointnine.com/)
+- [Seedcamp](https://seedcamp.com/)
+- [Frontline Seed](https://frontline.vc/frontline-seed/)
+- [Playfair](https://playfair.vc/)
+- [Episode 1](https://www.episode1.com/)
+
+## What A Founder Actually Does
+
+If you are non-technical, the workflow is simple:
+
+1. Put your current story into `startup.md`, `founder-bio.md`, and `traction-digest.md`.
+2. Add your target round and geography in `config/profile.yml`.
+3. Add investor names or URLs in `investors.yml`.
+4. Ask the agent to refresh the deck, scan investors, or compare targets.
+5. Review the generated shortlist and answer the follow-up questions.
+6. Send only the best applications and intros, not everything everywhere.
+
 ## Features
 
-| Feature | Description |
-|---------|-------------|
-| **Target Scanner** | Match configured VCs, accelerators, angels, and founder programs against your stage, sector, geography, and round |
-| **Fit Evaluation** | Score one target with a structured fundraising rubric: thesis, stage, geography, access path, strategic value |
-| **Deck Refresh** | Compare deck, website, founder inputs, and current proof to identify stale claims and missing slides |
-| **Pitch Deck Generation** | Draft 10-12 slide investor decks, memos, and PDF exports |
-| **Founder Questionnaire Loop** | Ask high-value follow-up questions when the story or metrics are incomplete |
-| **News / Trend Memory** | Track market shifts, competitor moves, and investor-relevant hooks in `market-watch.md` |
-| **Pipeline Tracking** | Keep a single source of truth for targets, statuses, and follow-up timing |
-| **Human-in-the-Loop** | Venture-Ops drafts and recommends; founders still send the application, outreach, or deck |
+| Feature | What it means in practice |
+|---------|---------------------------|
+| **Target Scanner** | Finds investors, accelerators, angels, and founder programs that match your stage, sector, geography, and round |
+| **Fit Evaluation** | Explains why a target fits or does not fit, instead of just giving you a name |
+| **Deck Refresh** | Compares deck, website, founder inputs, and current proof to find stale claims and missing slides |
+| **Pitch Deck Generation** | Drafts a 10-12 slide narrative and exports it to HTML/PDF |
+| **Founder Question Loop** | Asks the highest-value questions when your story is incomplete or inconsistent |
+| **News / Trend Memory** | Tracks market shifts, relevant incidents, and category timing hooks in `market-watch.md` |
+| **Pipeline Tracking** | Keeps a single source of truth for targets, statuses, and follow-up timing |
+| **Human-in-the-Loop** | Drafts and recommends, while the founder stays in control of submissions |
 
 ## Example Use Cases
 
 ### 1. Refresh a stale deck before investor meetings
 
 You have:
-- a PDF deck from 6 weeks ago
+
+- a PDF deck from a few weeks ago
 - a startup website that has evolved
-- a lot of product work shipped since then
+- product updates that are not reflected in the narrative
 
 Use Venture-Ops to:
+
 - compare the deck against the front page
 - flag missing metrics, outdated product scope, and stale screenshots
-- ask you targeted questions
+- ask targeted founder questions
 - generate an updated 12-slide draft
 
 ### 2. Find real-fit investors instead of broad lists
@@ -63,42 +164,31 @@ Use Venture-Ops to:
 You are a Berlin-based pre-seed founder building developer infrastructure.
 
 Use Venture-Ops to:
+
 - configure your target profile once
 - scan a curated investor universe
 - rank targets by fit
-- identify who should get time this week and who should be skipped
+- identify who deserves time this week and who should be skipped
 
 ### 3. Apply to accelerators without generic answers
 
 You want to apply to YC, EF, Antler, or another founder program.
 
 Use Venture-Ops to:
+
 - adapt the company story to each program
-- generate tighter founder bios and application answers
-- highlight where your current deck underexplains the “why now”
+- generate sharper founder bios and application answers
+- highlight where the deck underexplains the "why now"
 
 ### 4. Keep the fundraising narrative current
 
 The market changes fast.
 
 Use Venture-Ops to:
+
 - monitor current trends and adjacent-company news
 - update `market-watch.md`
-- surface “this should change in the deck now” signals before the next investor call
-
-## Real Example Flow
-
-For QualityMax, Venture-Ops was used to:
-
-- ingest an existing pre-seed deck PDF
-- inspect `qualitymax.io`
-- inspect the public founder portfolio site
-- build a founder bio and startup source-of-truth
-- generate a refreshed investor-deck draft
-- export the draft as a PDF
-- produce a target list of likely-fit VCs and accelerators
-
-Those company-specific artifacts are intentionally not committed to the public repo. The public repository contains the reusable engine, templates, and workflow.
+- surface "this should change in the deck now" signals before the next investor call
 
 ## Quick Start
 
@@ -114,8 +204,8 @@ npm run doctor
 # 3. Customize
 # Edit startup.md, founder-bio.md, config/profile.yml, and investors.yml
 
-# 4. Start using it
-# Run in your AI coding agent or use the local scripts below
+# 4. Optional: regenerate the public README visuals
+npm run readme:assets
 ```
 
 Then customize:
@@ -129,7 +219,7 @@ Then customize:
 
 ## Usage
 
-Venture-Ops can be used in two ways:
+Venture-Ops can be used in two ways.
 
 ### Local commands
 
@@ -160,6 +250,7 @@ npm run followup                # surface follow-up candidates from tracker
 ```
 
 Or just paste:
+
 - a VC URL
 - an accelerator page
 - your current deck
@@ -188,21 +279,18 @@ Update market-watch.md with the last 30 days of relevant category news.
 ## How It Works
 
 ```text
-Startup profile + founder profile + traction memory
-                │
-                ▼
-Configured investor / accelerator universe
-                │
-                ▼
-Fit evaluation + refresh loop + market context
-                │
-        ┌───────┼────────┐
-        ▼       ▼        ▼
-     Report    Deck    Tracker
-      .md      .pdf      .md
+Deck + website + founder memory + traction notes
+                   │
+                   ▼
+        Refresh loop + fit scoring + trend monitoring
+                   │
+          ┌────────┼────────┐
+          ▼        ▼        ▼
+      Reports    Decks    Tracker
+       .md      .pdf/.html  .md
 ```
 
-The important point: Venture-Ops is not just “write me a deck.” It is a reusable operating model:
+The important point: Venture-Ops is not just "write me a deck." It is a reusable operating model:
 
 - source of truth files
 - mode-based workflows
@@ -245,7 +333,8 @@ venture-ops/
 │   ├── pipeline.md            # Inbox of target URLs/names
 │   └── targets.md             # Fundraising tracker
 ├── reports/                   # Fit reports and refresh artifacts
-└── output/                    # Generated decks and PDFs
+├── output/                    # Generated decks and PDFs
+└── assets/readme/             # Public README visuals
 ```
 
 ## Operating Principle
@@ -255,6 +344,7 @@ This is a filter, not a spam machine.
 A small number of high-fit, high-context investor conversations beats broad cold outreach. Venture-Ops should make the founder sharper, not noisier.
 
 It should also get better over time:
+
 - every founder correction sharpens the profile
 - every new metric improves the deck
 - every missed question becomes a future checklist item
@@ -262,7 +352,7 @@ It should also get better over time:
 
 ## Disclaimer
 
-**Venture-Ops is a local, open-source workflow — not a hosted fundraising platform.**
+**Venture-Ops is a local, open-source workflow, not a hosted fundraising platform.**
 
 By using it, you acknowledge:
 
