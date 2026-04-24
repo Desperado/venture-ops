@@ -2,41 +2,35 @@
 
 ## Our Pledge
 
-We as members, contributors, and maintainers pledge to make participation in career-ops a harassment-free experience for everyone, regardless of age, body size, disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, religion, or sexual identity and orientation.
+We as members, contributors, and maintainers pledge to make participation in Venture-Ops a harassment-free experience for everyone, regardless of age, body size, disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, religion, or sexual identity and orientation.
 
 ## Our Standards
 
-**Examples of behavior that contributes to a positive environment:**
+Examples of behavior that contributes to a positive environment:
 
-- Using welcoming and inclusive language
-- Being respectful of differing viewpoints and experiences
-- Gracefully accepting constructive criticism
-- Focusing on what is best for the community
-- Showing empathy towards other community members
+- using welcoming and inclusive language
+- being respectful of differing viewpoints and experiences
+- gracefully accepting constructive criticism
+- focusing on what is best for the community
+- showing empathy toward other community members
 
-**Examples of unacceptable behavior:**
+Examples of unacceptable behavior:
 
-- Trolling, insulting/derogatory comments, and personal attacks
-- Public or private harassment
-- Publishing others' private information without explicit permission
-- Demanding behavior or entitlement toward maintainers' time
-- Any conduct which could reasonably be considered inappropriate in a professional setting
+- trolling, insulting comments, and personal attacks
+- public or private harassment
+- publishing others' private information without explicit permission
+- demanding behavior or entitlement toward maintainers' time
+- conduct that would reasonably be considered inappropriate in a professional setting
 
 ## Enforcement
 
-Instances of abusive, harassing, or otherwise unacceptable behavior may be reported by contacting **hi@santifer.io**. All complaints will be reviewed and investigated.
+Instances of abusive, harassing, or otherwise unacceptable behavior may be reported through the repository contact channels. All complaints will be reviewed and investigated.
 
-Maintainers have the right and responsibility to remove, edit, or reject comments, commits, code, issues, and other contributions that violate this Code of Conduct, and to temporarily or permanently ban any contributor for behaviors they deem inappropriate, threatening, or harmful.
-
-## Enforcement Actions
-
-1. **Warning** — A private written warning with clarity on the violation
-2. **Temporary Ban** — Temporary inability to interact with the project
-3. **Permanent Ban** — Permanent removal from all project spaces
+Maintainers have the right and responsibility to remove, edit, or reject comments, commits, code, issues, and other contributions that violate this Code of Conduct, and to temporarily or permanently ban any contributor for harmful behavior.
 
 ## Scope
 
-This Code of Conduct applies within all project spaces (GitHub, Discord, social media) and when an individual is representing the project in public spaces.
+This Code of Conduct applies within all project spaces and when an individual is representing the project in public spaces.
 
 ## Attribution
 

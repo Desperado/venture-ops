@@ -12,7 +12,7 @@ This document defines which files belong to the founder/user layer and which bel
 | `market-watch.md` | Recent news, market shifts, timing hooks, competitor signals |
 | `config/profile.yml` | Raise profile, stage, geography, target investor filters |
 | `modes/_profile.md` | Founder-specific scoring notes, narrative, objections, positioning |
-| `investors.yml` | Customized investor/accelerator universe |
+| `investors.yml` | Customized investor and accelerator universe |
 | `data/targets.md` | Fundraising tracker |
 | `data/pipeline.md` | Target inbox |
 | `data/scan-history.tsv` | Scanner dedup history |
@@ -28,8 +28,8 @@ This document defines which files belong to the founder/user layer and which bel
 | `modes/*.md` | Workflow instructions |
 | `templates/*` | Base templates |
 | `*.mjs` | Utility scripts |
-| `batch/*` | Batch orchestration |
 | `docs/*` | Documentation |
+| `scripts/*` | Helper scripts such as README asset generation |
 | `CLAUDE.md`, `AGENTS.md` | Agent instructions |
 
 ## Rule

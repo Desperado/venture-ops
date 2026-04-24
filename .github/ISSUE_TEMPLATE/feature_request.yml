@@ -7,20 +7,20 @@ body:
     attributes:
       label: Code of Conduct
       options:
-        - label: I agree to follow the [Code of Conduct](https://github.com/santifer/career-ops/blob/main/CODE_OF_CONDUCT.md)
+        - label: I agree to follow the Code of Conduct in this repository
           required: true
   - type: checkboxes
     id: search
     attributes:
       label: Existing issues
       options:
-        - label: I searched existing issues and this hasn't been requested yet
+        - label: I searched existing issues and this has not been requested yet
           required: true
   - type: textarea
     id: problem
     attributes:
       label: Problem
-      description: What problem does this solve? Why do you need this?
+      description: What problem does this solve?
     validations:
       required: true
   - type: textarea
@@ -35,12 +35,10 @@ body:
     attributes:
       label: Area
       options:
-        - Evaluation / Scoring
-        - PDF Generation
-        - Portal Scanner
-        - Dashboard TUI
-        - Batch Processing
-        - Language / i18n
+        - Investor discovery
+        - Deck generation
+        - Refresh workflow
+        - Tracker and follow-ups
         - Documentation
         - Other
     validations:

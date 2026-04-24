@@ -1,5 +1,5 @@
 {
-  description = "career-ops - AI job search pipeline";
+  description = "venture-ops - AI fundraising operating system";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -14,14 +14,10 @@
 
       devShell.packages =
         pkgs: with pkgs; [
-
           nodejs
           bun
-
           coreutils
-
           playwright-driver.browsers
-
         ];
 
       devShell.env = pkgs: {
@@ -31,7 +27,6 @@
       };
 
       devShell.shellHook = pkgs: ''
-        # Pin npm playwright to match nixpkgs browser binaries
         EXPECTED="${pkgs.playwright-driver.version}"
         CURRENT=$(node -e "try{console.log(require('playwright-core/package.json').version)}catch{}" 2>/dev/null)
         if [ "$CURRENT" != "$EXPECTED" ]; then
@@ -41,5 +36,4 @@
       '';
 
     };
-
 }

@@ -1,5 +1,5 @@
 name: Bug Report
-description: Report a bug in career-ops
+description: Report a bug in Venture-Ops
 labels: ["bug"]
 body:
   - type: checkboxes
@@ -7,14 +7,14 @@ body:
     attributes:
       label: Code of Conduct
       options:
-        - label: I agree to follow the [Code of Conduct](https://github.com/santifer/career-ops/blob/main/CODE_OF_CONDUCT.md)
+        - label: I agree to follow the Code of Conduct in this repository
           required: true
   - type: checkboxes
     id: search
     attributes:
       label: Existing issues
       options:
-        - label: I searched existing issues and this hasn't been reported yet
+        - label: I searched existing issues and this has not been reported yet
           required: true
   - type: textarea
     id: description
@@ -49,5 +49,5 @@ body:
     id: doctor
     attributes:
       label: Output of npm run doctor
-      description: Paste the output here (helps us diagnose setup issues)
+      description: Paste the output here if relevant
       render: shell

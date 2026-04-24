@@ -1,6 +1,6 @@
 # Venture-Ops -- AI Fundraising Pipeline
 
-Venture-Ops adapts the Career-Ops engine to fundraising: investor discovery, accelerator fit, pitch-deck generation, application support, outreach drafting, pipeline tracking, follow-up cadence, and narrative learning.
+Venture-Ops is a founder-side fundraising system for investor discovery, accelerator fit, pitch-deck generation, application support, outreach drafting, pipeline tracking, follow-up cadence, and narrative learning.
 
 ## Data Contract
 
@@ -13,9 +13,9 @@ There are two layers.
 
 **System Layer (safe to update):**
 - `modes/_shared.md`, all other checked-in mode files
-- `CLAUDE.md`, `AGENTS.md`, `*.mjs`, `templates/*`, `batch/*`, `docs/*`
+- `CLAUDE.md`, `AGENTS.md`, `*.mjs`, `templates/*`, `docs/*`, `scripts/*`
 
-**Rule:** When customizing thesis, archetypes, fundraising narrative, stage, target investor types, deal-breakers, proof points, or deck positioning, write to `config/profile.yml`, `modes/_profile.md`, `startup.md`, `founder-bio.md`, or `traction-digest.md`. Do not put founder-specific material in `modes/_shared.md`.
+**Rule:** When customizing thesis, narrative, stage, target investor types, deal-breakers, proof points, or deck positioning, write to `config/profile.yml`, `modes/_profile.md`, `startup.md`, `founder-bio.md`, `traction-digest.md`, or `market-watch.md`. Do not put founder-specific material in `modes/_shared.md`.
 
 ## What Venture-Ops Does
 
@@ -25,7 +25,7 @@ There are two layers.
 - Scans a configured investor universe without spending LLM tokens.
 - Maintains an inbox and tracker so fundraising is auditable.
 - Drafts outreach, warm-intro requests, application answers, and follow-ups.
-- Learns from the founder's corrections after each evaluation and asks targeted founder questions when important information is stale or missing.
+- Learns from founder corrections after each evaluation and asks targeted questions when important information is stale or missing.
 - Monitors relevant news and trends so materials do not lag the market narrative.
 
 ## First Run -- Onboarding

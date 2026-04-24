@@ -2,8 +2,6 @@
 
 Venture-Ops is an AI fundraising command center for founders: investor discovery, pitch-deck refresh, application drafting, pipeline tracking, and market-aware fundraising ops.
 
-It is a sibling project to `career-ops`, but aimed at startup fundraising instead of job search.
-
 Instead of juggling old decks, scattered investor notes, and generic applications, you get one structured system that helps you:
 
 - find investors and programs that actually fit your company
@@ -193,19 +191,11 @@ Use Venture-Ops to:
 ## Quick Start
 
 ```bash
-# 1. Clone and install
 git clone https://github.com/Desperado/venture-ops.git
-cd venture-ops && npm install
+cd venture-ops
+npm install
 npx playwright install chromium
-
-# 2. Verify setup
 npm run doctor
-
-# 3. Customize
-# Edit startup.md, founder-bio.md, config/profile.yml, and investors.yml
-
-# 4. Optional: regenerate the public README visuals
-npm run readme:assets
 ```
 
 Then customize:
@@ -217,9 +207,13 @@ Then customize:
 5. Edit `config/profile.yml` for stage, geography, round size, and investor targeting.
 6. Edit `investors.yml` to add funds, angels, accelerators, grants, or founder programs you want to track.
 
-## Usage
+If you want to refresh the public visuals:
 
-Venture-Ops can be used in two ways.
+```bash
+npm run readme:assets
+```
+
+## Usage
 
 ### Local commands
 
@@ -259,8 +253,6 @@ Or just paste:
 and ask the agent to run the relevant mode.
 
 ## Example Prompts
-
-Try prompts like:
 
 ```text
 Refresh my deck from this PDF and compare it against my website.
@@ -318,23 +310,18 @@ The important point: Venture-Ops is not just "write me a deck." It is a reusable
 
 ```text
 venture-ops/
-├── startup.md                 # Company source of truth
-├── founder-bio.md             # Founder credibility and narrative
-├── traction-digest.md         # Compact proof and metrics memory
-├── market-watch.md            # News, trend, and timing memory
-├── config/profile.yml         # Raise profile and targeting preferences
-├── investors.yml              # Customized target universe
-├── modes/                     # Agent workflows
+├── startup.md
+├── founder-bio.md
+├── traction-digest.md
+├── market-watch.md
+├── config/profile.yml
+├── investors.yml
+├── modes/
 ├── templates/
-│   ├── deck-template.html
-│   ├── investors.example.yml
-│   └── states.yml
 ├── data/
-│   ├── pipeline.md            # Inbox of target URLs/names
-│   └── targets.md             # Fundraising tracker
-├── reports/                   # Fit reports and refresh artifacts
-├── output/                    # Generated decks and PDFs
-└── assets/readme/             # Public README visuals
+├── reports/
+├── output/
+└── assets/readme/
 ```
 
 ## Operating Principle

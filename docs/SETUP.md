@@ -2,79 +2,68 @@
 
 ## Prerequisites
 
-- [Claude Code](https://claude.ai/code) installed and configured
-- Node.js 18+ (for PDF generation and utility scripts)
-- (Optional) Go 1.21+ (for the dashboard TUI)
+- Node.js 18+
+- Playwright Chromium for PDF generation
+- An AI coding environment such as Claude Code, Codex, or OpenCode
 
-## Quick Start (5 steps)
+## Quick Start
 
 ### 1. Clone and install
 
 ```bash
-git clone https://github.com/santifer/career-ops.git
-cd career-ops
+git clone https://github.com/Desperado/venture-ops.git
+cd venture-ops
 npm install
-npx playwright install chromium   # Required for PDF generation
+npx playwright install chromium
 ```
 
-### 2. Configure your profile
+### 2. Initialize local files
 
 ```bash
-cp config/profile.example.yml config/profile.yml
+npm run doctor
 ```
 
-Edit `config/profile.yml` with your personal details: name, email, target roles, narrative, proof points.
+This creates local starter files if they are missing.
 
-### 3. Add your CV
+### 3. Fill in your startup context
 
-Create `cv.md` in the project root with your full CV in markdown format. This is the source of truth for all evaluations and PDFs.
+Edit:
 
-(Optional) Create `article-digest.md` with proof points from your portfolio projects/articles.
+- `startup.md`
+- `founder-bio.md`
+- `traction-digest.md`
+- `market-watch.md`
+- `config/profile.yml`
+- `investors.yml`
 
-### 4. Configure portals
+### 4. Run a first scan
 
 ```bash
-cp templates/portals.example.yml portals.yml
+npm run scan -- --dry-run
 ```
 
-Edit `portals.yml`:
-- Update `title_filter.positive` with keywords matching your target roles
-- Add companies you want to track in `tracked_companies`
-- Customize `search_queries` for your preferred job boards
-
-### 5. Start using
-
-Open Claude Code in this directory:
+### 5. Generate a first deck
 
 ```bash
-claude
+npm run deck -- templates/deck-template.html output/sample-deck.pdf
 ```
 
-Then paste a job offer URL or description. Career-ops will automatically evaluate it, generate a report, create a tailored PDF, and track it.
-
-## Available Commands
+## Agent Commands
 
 | Action | How |
 |--------|-----|
-| Evaluate an offer | Paste a URL or JD text |
-| Search for offers | `/career-ops scan` |
-| Process pending URLs | `/career-ops pipeline` |
-| Generate a PDF | `/career-ops pdf` |
-| Batch evaluate | `/career-ops batch` |
-| Check tracker status | `/career-ops tracker` |
-| Fill application form | `/career-ops apply` |
+| Scan configured targets | `/venture-ops scan` |
+| Evaluate one target | `/venture-ops evaluate {url}` |
+| Refresh a deck from live context | `/venture-ops refresh` |
+| Generate a deck draft | `/venture-ops deck {target}` |
+| Draft application or intro copy | `/venture-ops apply {target}` |
+| Process inbox | `/venture-ops pipeline` |
+| Review tracker status | `/venture-ops tracker` |
 
 ## Verify Setup
 
 ```bash
-node cv-sync-check.mjs      # Check configuration
-node verify-pipeline.mjs     # Check pipeline integrity
-```
-
-## Build Dashboard (Optional)
-
-```bash
-cd dashboard
-go build -o career-dashboard .
-./career-dashboard --path ..  # Opens TUI pipeline viewer
+npm run doctor
+npm run verify
+npm run scan -- --dry-run
 ```

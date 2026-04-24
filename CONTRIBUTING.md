@@ -1,73 +1,64 @@
-# Contributing to Career-Ops
+# Contributing to Venture-Ops
 
-Thanks for your interest in contributing! Career-Ops is built with Claude Code, and you can use it for development too.
+Thanks for your interest in contributing.
+
+Venture-Ops is a local open-source workflow for founder-side fundraising. Good contributions make the system clearer, safer, and more useful to real founders running real fundraising processes.
 
 ## Before Submitting a PR
 
-**Please open an issue first to discuss the change you'd like to make.** This helps us align on direction before you invest time coding.
-
-PRs without a corresponding issue may be closed if they don't align with the project's architecture or goals.
+Please open an issue first for larger changes so we can align on direction before you spend time implementing.
 
 ### What makes a good PR
-- Fixes a bug listed in Issues
-- Addresses a feature request that was discussed and approved
-- Includes a clear description of what changed and why
-- Follows the existing code style and project philosophy (simple, minimal, quality over quantity)
+
+- fixes a real bug or ambiguity in the current workflow
+- improves documentation or setup clarity
+- adds a useful mode, template, or script without duplicating existing logic
+- keeps founder data out of tracked files
+- follows the existing project philosophy: simple, local-first, quality over quantity
 
 ## Quick Start
 
-1. Open an issue to discuss your idea
+1. Open or comment on an issue
 2. Fork the repo
-3. Create a branch (`git checkout -b feature/my-feature`)
-4. Make your changes
-5. Test with a fresh clone (see [docs/SETUP.md](docs/SETUP.md))
-6. Commit and push
-7. Open a Pull Request referencing the issue
+3. Create a branch
+4. Make the change
+5. Run the local checks
+6. Open a PR with a clear explanation of what changed and why
 
-## What to Contribute
+## Good Contribution Areas
 
-**Good first contributions:**
-- Add companies to `templates/portals.example.yml`
-- Translate modes to other languages
-- Improve documentation
-- Add example CVs for different roles (in `examples/`)
-- Report bugs via [Issues](https://github.com/santifer/career-ops/issues)
-
-**Bigger contributions:**
-- New evaluation dimensions or scoring logic
-- Dashboard TUI features (in `dashboard/`)
-- New skill modes (in `modes/`)
-- Script improvements (`.mjs` utilities)
+- improve investor and accelerator workflows
+- improve deck generation, refresh, or report clarity
+- tighten documentation and onboarding
+- add generic example materials that do not expose founder data
+- improve scripts used by `doctor`, `scan`, `verify`, or deck export
 
 ## Guidelines
 
-- Keep modes language-agnostic when possible (Claude handles both EN and ES)
-- Scripts should handle missing files gracefully (check `existsSync` before `readFileSync`)
-- Dashboard changes require `go build` — test with real data before submitting
-- Don't commit personal data (cv.md, profile.yml, applications.md, reports/)
+- keep founder-specific data in user-layer files, never in checked-in shared prompts
+- prefer reusable templates and modes over one-off logic
+- avoid hidden automation that acts on behalf of the founder
+- do not commit private startup information, investor notes, decks, or generated outputs
 
-## What we do NOT accept
+## What We Do Not Accept
 
-- **PRs that scrape platforms prohibiting automated access** (LinkedIn, etc.). We actively reject these to respect third-party ToS.
-- **PRs that enable auto-submitting applications** without human review. career-ops is a decision-support tool, not a spam bot.
-- **PRs that add external API dependencies** without prior discussion in an issue.
-- **PRs containing personal data** (real CVs, emails, phone numbers). Use `examples/` with fictional data instead.
+- PRs that auto-submit applications or send outreach without human review
+- PRs that add investor spam workflows
+- PRs containing private founder or company data
+- PRs that depend on proprietary hosted infrastructure without prior discussion
 
 ## Development
 
 ```bash
-# Scripts
-npm run doctor                # Setup validation
-node verify-pipeline.mjs     # Health check
-node cv-sync-check.mjs        # Config check
-
-# Dashboard
-cd dashboard && go build -o career-dashboard .
-./career-dashboard --path ..
+npm install
+npx playwright install chromium
+npm run doctor
+npm run verify
+npm run scan -- --dry-run
 ```
 
 ## Need Help?
 
-- [Join the Discord](https://discord.gg/8pRpHETxa4) — fastest way to get answers and connect with other contributors
-- [Open an issue](https://github.com/santifer/career-ops/issues)
-- [Read the architecture docs](docs/ARCHITECTURE.md)
+- [Open an issue](https://github.com/Desperado/venture-ops/issues)
+- [Read the setup guide](docs/SETUP.md)
+- [Read the architecture notes](docs/ARCHITECTURE.md)

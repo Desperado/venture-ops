@@ -17,8 +17,6 @@ function warn(msg) {
 ensureDir('data');
 ensureDir('reports');
 ensureDir('output');
-ensureDir('batch/logs');
-ensureDir('batch/tracker-additions');
 
 if (!existsSync('config/profile.yml') && existsSync('config/profile.example.yml')) {
   copyFileSync('config/profile.example.yml', 'config/profile.yml');
@@ -27,7 +25,7 @@ if (!existsSync('config/profile.yml') && existsSync('config/profile.example.yml'
 
 if (!existsSync('investors.yml') && existsSync('templates/investors.example.yml')) {
   copyFileSync('templates/investors.example.yml', 'investors.yml');
-  warn('Created investors.yml from example; customize target universe.');
+  warn('Created investors.yml from example; customize the target universe.');
 }
 
 if (!existsSync('modes/_profile.md') && existsSync('modes/_profile.template.md')) {
@@ -39,12 +37,15 @@ if (!existsSync('startup.md')) writeFileSync('startup.md', '# Startup Source of 
 if (!existsSync('founder-bio.md')) writeFileSync('founder-bio.md', '# Founder Bio\n\nTODO\n', 'utf8');
 if (!existsSync('traction-digest.md')) writeFileSync('traction-digest.md', '# Traction Digest\n\nTODO\n', 'utf8');
 if (!existsSync('market-watch.md')) writeFileSync('market-watch.md', '# Market Watch\n\nTODO\n', 'utf8');
+
 if (!existsSync('data/targets.md')) {
   writeFileSync('data/targets.md', '# Fundraising Tracker\n\n| # | Date | Target | Type | Stage | Fit | Status | Deck | Report | Notes |\n|---|------|--------|------|-------|-----|--------|------|--------|-------|\n', 'utf8');
 }
+
 if (!existsSync('data/pipeline.md')) {
   writeFileSync('data/pipeline.md', '# Target Pipeline Inbox\n\n## Pending\n\n## Processed\n', 'utf8');
 }
+
 if (!existsSync('data/scan-history.tsv')) {
   writeFileSync('data/scan-history.tsv', 'url\tfirst_seen\ttype\tstage\ttarget\tstatus\n', 'utf8');
 }

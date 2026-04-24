@@ -1,76 +1,50 @@
 # Customization Guide
 
-## Profile (config/profile.yml)
+## Profile (`config/profile.yml`)
 
-This is the single source of truth for your identity. All modes read from here.
+This is the main control file for your fundraising strategy.
 
-Key sections:
-- **candidate**: Name, email, phone, location, LinkedIn, portfolio
-- **target_roles**: Your North Star roles and archetypes
-- **narrative**: Your headline, exit story, superpowers, proof points
-- **compensation**: Target range, minimum, currency
-- **location**: Country, timezone, visa status, on-site availability
+Typical sections include:
 
-## Target Roles (modes/_profile.md)
+- startup name and website
+- stage and raise target
+- geography
+- sector tags
+- target investor types
+- exclusions and deal-breakers
 
-The archetype table in `_profile.md` determines how offers are scored and CVs are framed. Edit the table to match YOUR career targets:
+## Founder Notes (`modes/_profile.md`)
 
-```markdown
-| Archetype | Thematic axes | What they buy |
-|-----------|---------------|---------------|
-| **Your Role 1** | key skills | what they need |
-| **Your Role 2** | key skills | what they need |
-```
+Use this file for the founder-specific heuristics that should shape evaluations:
 
-Also update the "Adaptive Framing" table to map YOUR specific projects to each archetype.
+- narrative angles that resonate
+- objections you keep hearing
+- what to emphasize for infrastructure, AI, enterprise, or developer-tool investors
+- what belongs in the main deck versus appendix
 
-## Portals (portals.yml)
+## Startup Source Files
 
-Copy from `templates/portals.example.yml` and customize:
+Use these files as your durable memory:
 
-1. **title_filter.positive**: Keywords matching your target roles
-2. **title_filter.negative**: Tech stacks or domains to exclude
-3. **search_queries**: WebSearch queries for job boards (Ashby, Greenhouse, Lever)
-4. **tracked_companies**: Companies to check directly
+- `startup.md`: product, market, problem, roadmap
+- `founder-bio.md`: founder-market fit and credibility
+- `traction-digest.md`: metrics, customer proof, launches, and evidence
+- `market-watch.md`: timing hooks, news, incidents, competitor movement
 
-## CV Template (templates/cv-template.html)
+## Investor Universe (`investors.yml`)
 
-The HTML template uses these design tokens:
-- **Fonts**: Space Grotesk (headings) + DM Sans (body) -- self-hosted in `fonts/`
-- **Colors**: Cyan primary (`hsl(187,74%,32%)`) + Purple accent (`hsl(270,70%,45%)`)
-- **Layout**: Single-column, ATS-optimized
+Copy from `templates/investors.example.yml` and customize:
 
-To customize fonts/colors, edit the CSS in the template. Update font files in `fonts/` if switching fonts.
+1. filters for stage, geography, and investor type
+2. target entries with URLs and notes
+3. thesis details or special constraints you care about
 
-## Negotiation Scripts (modes/_shared.md)
+## Templates
 
-The negotiation section provides frameworks for salary discussions. Replace the example scripts with your own:
-- Target ranges
-- Geographic arbitrage strategy
-- Pushback responses
+- `templates/deck-template.html`: base HTML used for generated deck PDFs
+- `templates/investors.example.yml`: starter investor universe
+- `templates/states.yml`: canonical workflow states
 
-## Hooks (Optional)
+## Shared Rules
 
-Career-ops can integrate with external systems via Claude Code hooks. Example hooks:
-
-```json
-{
-  "hooks": {
-    "SessionStart": [{
-      "hooks": [{
-        "type": "command",
-        "command": "echo 'Career-ops session started'"
-      }]
-    }]
-  }
-}
-```
-
-Save hooks in `.claude/settings.json`.
-
-## States (templates/states.yml)
-
-The canonical states rarely need changing. If you add new states, update:
-1. `templates/states.yml`
-2. `normalize-statuses.mjs` (alias mappings)
-3. `modes/_shared.md` (any references)
+Keep private founder data in user-layer files, not in shared prompts or templates.

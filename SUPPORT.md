@@ -1,28 +1,26 @@
 # Getting Help
 
-career-ops is an open source project maintained in limited time. Here's how to get help efficiently.
+Venture-Ops is maintained in limited time, so the fastest path is to keep support requests concrete and reproducible.
 
-## Where to ask
+## Where to Ask
 
 | Question type | Where |
 |---|---|
-| **Bug** (something is broken) | [GitHub Issues](https://github.com/santifer/career-ops/issues) — use the Bug Report template |
-| **Feature idea** | [GitHub Issues](https://github.com/santifer/career-ops/issues) — use the Feature Request template |
-| **How do I...?** | [GitHub Discussions](https://github.com/santifer/career-ops/discussions) or [Discord](https://discord.gg/8pRpHETxa4) |
-| **Setup help** | Check [docs/SETUP.md](docs/SETUP.md) first, then ask in [Discord](https://discord.gg/8pRpHETxa4) |
-| **Security vulnerability** | Email hi@santifer.io — see [SECURITY.md](SECURITY.md) |
+| **Bug** | [GitHub Issues](https://github.com/Desperado/venture-ops/issues) |
+| **Feature idea** | [GitHub Issues](https://github.com/Desperado/venture-ops/issues) |
+| **Setup help** | Read [docs/SETUP.md](docs/SETUP.md), then open an issue if something is unclear |
+| **Security vulnerability** | Follow [SECURITY.md](SECURITY.md) |
 
-## Before opening an issue
+## Before Opening an Issue
 
-1. Search existing issues — someone may have reported it already
-2. Run `npm run doctor` — it catches most setup problems
-3. Include your OS, Node.js version, and the CLI you're using (Claude Code, OpenCode, etc.)
+1. Search existing issues first.
+2. Run `npm run doctor`.
+3. Include your OS, Node.js version, and the command you ran.
+4. If relevant, include the exact investor URL, accelerator page, or deck-generation step that failed.
 
-## What NOT to use GitHub Issues for
+## What Not To Use Issues For
 
-- General questions about job searching
-- Requests for personal career advice
-- Support for modified forks or unofficial distributions
-- Asking the maintainer to review your CV
-
-These will be closed and redirected to the appropriate channel.
+- private fundraising strategy review
+- sharing confidential deck or diligence materials
+- asking the maintainer to contact investors on your behalf
+- support for unpublished local modifications without enough context to reproduce them

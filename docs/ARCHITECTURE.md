@@ -2,109 +2,60 @@
 
 ## System Overview
 
-```
-                    ┌─────────────────────────────────┐
-                    │         Claude Code Agent        │
-                    │   (reads CLAUDE.md + modes/*.md) │
-                    └──────────┬──────────────────────┘
-                               │
-            ┌──────────────────┼──────────────────────┐
-            │                  │                       │
-     ┌──────▼──────┐   ┌──────▼──────┐   ┌───────────▼────────┐
-     │ Single Eval  │   │ Portal Scan │   │   Batch Process    │
-     │ (auto-pipe)  │   │  (scan.md)  │   │   (batch-runner)   │
-     └──────┬──────┘   └──────┬──────┘   └───────────┬────────┘
-            │                  │                       │
-            │           ┌──────▼──────┐          ┌────▼─────┐
-            │           │ pipeline.md │          │ N workers│
-            │           │ (URL inbox) │          │ (claude -p)
-            │           └─────────────┘          └────┬─────┘
-            │                                          │
-     ┌──────▼──────────────────────────────────────────▼──────┐
-     │                    Output Pipeline                      │
-     │  ┌──────────┐  ┌────────────┐  ┌───────────────────┐  │
-     │  │ Report.md│  │  PDF (HTML  │  │ Tracker TSV       │  │
-     │  │ (A-F eval)│  │  → Puppeteer)│  │ (merge-tracker)  │  │
-     │  └──────────┘  └────────────┘  └───────────────────┘  │
-     └────────────────────────────────────────────────────────┘
-                               │
-                    ┌──────────▼──────────┐
-                    │  data/applications.md │
-                    │  (canonical tracker)  │
-                    └──────────────────────┘
+```text
+Founder files + startup files + investor universe
+                     │
+                     ▼
+         Modes and scripts interpret the context
+                     │
+        ┌────────────┼────────────┐
+        ▼            ▼            ▼
+     Reports       Decks        Tracker
+      .md       .html/.pdf        .md
 ```
 
-## Evaluation Flow (Single Offer)
+## Core Inputs
 
-1. **Input**: User pastes JD text or URL
-2. **Extract**: Playwright/WebFetch extracts JD from URL
-3. **Classify**: Detect archetype (1 of 6 types)
-4. **Evaluate**: 6 blocks (A-F):
-   - A: Role summary
-   - B: CV match (gaps + mitigation)
-   - C: Level strategy
-   - D: Comp research (WebSearch)
-   - E: CV personalization plan
-   - F: Interview prep (STAR stories)
-5. **Score**: Weighted average across 10 dimensions (1-5)
-6. **Report**: Save as `reports/{num}-{company}-{date}.md`
-7. **PDF**: Generate ATS-optimized CV (`generate-pdf.mjs`)
-8. **Track**: Write TSV to `batch/tracker-additions/`, auto-merged
+- `startup.md`: company source of truth
+- `founder-bio.md`: founder credibility and background
+- `traction-digest.md`: metrics, proof, and customer notes
+- `market-watch.md`: recent market shifts and timing hooks
+- `config/profile.yml`: raise profile and target filters
+- `investors.yml`: investor and accelerator universe
 
-## Batch Processing
+## Core Outputs
 
-The batch system processes multiple offers in parallel:
+- target fit reports in `reports/`
+- generated slide HTML and PDFs in `output/`
+- fundraising tracker entries in `data/targets.md`
+- scanner inbox items in `data/pipeline.md`
 
-```
-batch-input.tsv    →  batch-runner.sh  →  N × claude -p workers
-(id, url, source)     (orchestrator)       (self-contained prompt)
-                           │
-                    batch-state.tsv
-                    (tracks progress)
-```
+## Main Workflows
 
-Each worker is a headless Claude instance (`claude -p`) that receives the full `batch-prompt.md` as context. Workers produce:
-- Report .md
-- PDF
-- Tracker TSV line
+### 1. Scan
 
-The orchestrator manages parallelism, state, retries, and resume.
+`scan-investors.mjs` matches configured targets against the startup profile and stage filters, then writes suggested items into the fundraising workflow.
 
-## Data Flow
+### 2. Evaluate
 
-```
-cv.md                    →  Evaluation context
-article-digest.md        →  Proof points for matching
-config/profile.yml       →  Candidate identity
-portals.yml              →  Scanner configuration
-templates/states.yml     →  Canonical status values
-templates/cv-template.html → PDF generation template
-```
+Agent modes turn a target URL or description into a structured fit assessment: thesis, stage, geography, likely objections, and best next action.
 
-## File Naming Conventions
+### 3. Refresh
 
-- Reports: `{###}-{company-slug}-{YYYY-MM-DD}.md` (3-digit zero-padded)
-- PDFs: `cv-candidate-{company-slug}-{YYYY-MM-DD}.pdf`
-- Tracker TSVs: `batch/tracker-additions/{id}.tsv`
+The refresh loop compares:
 
-## Pipeline Integrity
+- deck
+- startup website
+- founder notes
+- traction notes
+- current market context
 
-Scripts maintain data consistency:
+This is how Venture-Ops spots stale claims and missing proof before a founder sends materials.
 
-| Script | Purpose |
-|--------|---------|
-| `merge-tracker.mjs` | Merges batch TSV additions into applications.md |
-| `verify-pipeline.mjs` | Health check: statuses, duplicates, links |
-| `dedup-tracker.mjs` | Removes duplicate entries by company+role |
-| `normalize-statuses.mjs` | Maps status aliases to canonical values |
-| `cv-sync-check.mjs` | Validates setup consistency |
+### 4. Generate Deck
 
-## Dashboard TUI
+`generate-deck.mjs` renders a deck HTML file into PDF using Playwright.
 
-The `dashboard/` directory contains a standalone Go TUI application that visualizes the pipeline:
+### 5. Track
 
-- Filter tabs: All, Evaluada, Aplicado, Entrevista, Top >=4, No Aplicar
-- Sort modes: Score, Date, Company, Status
-- Grouped/flat view
-- Lazy-loaded report previews
-- Inline status picker
+`verify-pipeline.mjs` checks tracker consistency, report links, and status formatting so the fundraising process stays readable.
