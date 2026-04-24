@@ -1,0 +1,50 @@
+# Venture-Ops Profile Configuration
+# Copy to config/profile.yml and fill in your real details.
+
+startup:
+  name: "Acme AI"
+  website: "https://example.com"
+  one_liner: "AI workflow automation for regulated operations teams."
+  sector_tags: ["ai", "automation", "b2b saas"]
+  stage: "pre-seed"
+  geography: "Europe"
+  incorporation: "Delaware C-Corp"
+  demo_url: "https://example.com/demo"
+
+raise:
+  round: "pre-seed"
+  target_amount_usd: 1000000
+  committed_usd: 0
+  min_check_usd: 25000
+  target_check_usd: 150000
+  runway_months_after_raise: 18
+  use_of_funds:
+    - "ship v1 with design partners"
+    - "hire founding engineer"
+    - "convert pilots into paid contracts"
+
+targeting:
+  investor_types: ["vc", "angel", "scout", "accelerator"]
+  stages: ["pre-seed", "seed"]
+  geographies: ["Europe", "United States", "Remote"]
+  sectors: ["ai", "automation", "developer tools", "b2b saas"]
+  avoid:
+    - "consumer-only investors"
+    - "funds that require majority local incorporation outside US/EU"
+
+narrative:
+  wedge: "Start with a painful workflow that already has budget, then expand into a system of record."
+  founder_market_fit: "Founder has lived the operational pain and can build the product directly."
+  unfair_advantages:
+    - "deep customer discovery in the target workflow"
+    - "fast technical prototyping"
+    - "credible operator network"
+  current_objections:
+    - "prove urgency and budget ownership"
+    - "show repeatable distribution path"
+
+materials:
+  deck_status: "draft"
+  memo_status: "draft"
+  data_room_url: ""
+  intro_blurb: ""

@@ -1,0 +1,40 @@
+# Copy to investors.yml and customize.
+# The scanner matches these targets against config/profile.yml.
+
+filters:
+  sectors: ["ai", "automation", "b2b saas", "developer tools"]
+  stages: ["pre-seed", "seed"]
+  geographies: ["Europe", "United States", "Remote"]
+  investor_types: ["vc", "accelerator", "angel", "scout", "grant"]
+  min_fit_score: 3.5
+
+targets:
+  - name: "Y Combinator"
+    type: "accelerator"
+    url: "https://www.ycombinator.com/apply"
+    stages: ["idea", "pre-seed", "seed"]
+    sectors: ["ai", "developer tools", "b2b saas", "consumer", "fintech"]
+    geographies: ["Global", "Remote", "United States"]
+    check_size_usd: 500000
+    application_model: "cohort application"
+    notes: "Best for high-conviction accelerator path. Verify current terms and deadline."
+
+  - name: "Entrepreneur First"
+    type: "accelerator"
+    url: "https://www.joinef.com/"
+    stages: ["idea", "pre-seed"]
+    sectors: ["ai", "deep tech", "b2b saas", "developer tools"]
+    geographies: ["Europe", "United Kingdom", "United States", "Asia"]
+    check_size_usd: 100000
+    application_model: "talent-investor program"
+    notes: "Strong for very early technical companies. Verify city and cohort availability."
+
+  - name: "Seedcamp"
+    type: "vc"
+    url: "https://seedcamp.com/"
+    stages: ["pre-seed", "seed"]
+    sectors: ["ai", "b2b saas", "fintech", "marketplaces", "developer tools"]
+    geographies: ["Europe"]
+    check_size_usd: 250000
+    application_model: "warm intro preferred"
+    notes: "European early-stage fund. Match on ambition, founder-market fit, and early proof."

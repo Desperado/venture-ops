@@ -1,0 +1,34 @@
+statuses:
+  - id: queued
+    label: Queued
+    description: In pipeline, not evaluated yet
+  - id: evaluated
+    label: Evaluated
+    description: Fit report completed
+  - id: prepare
+    label: Prepare
+    description: Needs tailored deck, memo, or application materials
+  - id: intro-needed
+    label: Intro Needed
+    description: Needs warm path or carefully targeted cold outreach
+  - id: contacted
+    label: Contacted
+    description: Outreach or application sent by founder
+  - id: replied
+    label: Replied
+    description: Target has responded
+  - id: meeting
+    label: Meeting
+    description: Call, office hours, or partner conversation scheduled
+  - id: diligence
+    label: Diligence
+    description: Active information exchange
+  - id: committed
+    label: Committed
+    description: Investment, program place, grant, or equivalent secured
+  - id: rejected
+    label: Rejected
+    description: Declined or passed
+  - id: skipped
+    label: Skipped
+    description: Low fit or not worth founder time

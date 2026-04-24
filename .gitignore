@@ -1,0 +1,38 @@
+# Founder/user data
+config/profile.yml
+modes/_profile.md
+startup.md
+founder-bio.md
+traction-digest.md
+market-watch.md
+investors.yml
+data/targets.md
+data/pipeline.md
+data/scan-history.tsv
+data/follow-ups.md
+reports/*.md
+!reports/.gitkeep
+output/*
+!output/.gitkeep
+batch/logs/*
+!batch/logs/.gitkeep
+batch/batch-state.tsv
+batch/batch-input.tsv
+batch/tracker-additions/**/*.tsv
+!batch/tracker-additions/.gitkeep
+
+# Generated
+node_modules
+node_modules/
+package-lock.json
+.resolved-prompt-*
+
+# OS/editor
+.DS_Store
+*.mov
+*.mp4
+
+# Claude/Codex local
+.claude/settings.local.json
+.claude/memory/
+.envrc

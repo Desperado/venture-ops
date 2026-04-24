@@ -1,0 +1,27 @@
+{
+  "name": "venture-ops",
+  "version": "0.1.0",
+  "description": "AI-powered fundraising pipeline for pitch decks, investor discovery, accelerator applications, and VC outreach",
+  "type": "module",
+  "scripts": {
+    "doctor": "node doctor.mjs",
+    "verify": "node verify-pipeline.mjs",
+    "scan": "node scan-investors.mjs",
+    "deck": "node generate-deck.mjs",
+    "pdf": "node generate-deck.mjs",
+    "followup": "node followup-cadence.mjs"
+  },
+  "keywords": [
+    "ai",
+    "fundraising",
+    "venture-capital",
+    "accelerators",
+    "pitch-deck",
+    "automation"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "js-yaml": "^4.1.1",
+    "playwright": "^1.58.1"
+  }
+}

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Venture-Ops Pitch Deck</title>
+  <style>
+    @font-face { font-family: SpaceGrotesk; src: url('./fonts/space-grotesk-latin.woff2'); }
+    @font-face { font-family: DMSans; src: url('./fonts/dm-sans-latin.woff2'); }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: DMSans, Arial, sans-serif; color: #101828; background: #f5f7fb; }
+    .slide { width: 11in; height: 6.1875in; padding: 0.56in; page-break-after: always; background: #fff; display: flex; flex-direction: column; justify-content: space-between; }
+    h1, h2 { font-family: SpaceGrotesk, Arial, sans-serif; letter-spacing: 0; margin: 0; }
+    h1 { font-size: 44px; line-height: 1.02; max-width: 8.8in; }
+    h2 { font-size: 30px; line-height: 1.12; margin-bottom: 20px; }
+    p, li { font-size: 18px; line-height: 1.38; }
+    .kicker { color: #146c5f; font-weight: 700; text-transform: uppercase; font-size: 13px; letter-spacing: 0.08em; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .box { border: 1px solid #d6dde8; border-radius: 8px; padding: 18px; min-height: 120px; }
+    .metric { font-family: SpaceGrotesk, Arial, sans-serif; font-size: 34px; color: #146c5f; }
+    .footer { display: flex; justify-content: space-between; color: #667085; font-size: 12px; }
+    @page { size: 11in 6.1875in; margin: 0; }
+  </style>
+</head>
+<body>
+  <section class="slide">
+    <div>
+      <div class="kicker">Company Name</div>
+      <h1>One-line pitch that names the customer, pain, and outcome.</h1>
+      <p>Short supporting sentence with traction or a strong why-now signal.</p>
+    </div>
+    <div class="footer"><span>Confidential</span><span>venture-ops</span></div>
+  </section>
+
+  <section class="slide">
+    <div>
+      <div class="kicker">Problem</div>
+      <h2>The painful workflow customers already pay to solve.</h2>
+      <div class="grid">
+        <div class="box"><strong>Who</strong><p>ICP and buyer.</p></div>
+        <div class="box"><strong>Pain</strong><p>Cost, frequency, urgency.</p></div>
+        <div class="box"><strong>Why now</strong><p>Trigger that changes behavior.</p></div>
+      </div>
+    </div>
+    <div class="footer"><span>Problem</span><span>02</span></div>
+  </section>
+
+  <section class="slide">
+    <div>
+      <div class="kicker">Traction</div>
+      <h2>Evidence that the market is pulling.</h2>
+      <div class="grid">
+        <div class="box"><div class="metric">TODO</div><p>Revenue or pipeline</p></div>
+        <div class="box"><div class="metric">TODO</div><p>Users, pilots, or design partners</p></div>
+        <div class="box"><div class="metric">TODO</div><p>Usage, retention, or growth</p></div>
+      </div>
+    </div>
+    <div class="footer"><span>Traction</span><span>03</span></div>
+  </section>
+</body>
+</html>
