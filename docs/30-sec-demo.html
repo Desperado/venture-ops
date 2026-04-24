@@ -1,0 +1,753 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Venture-Ops 30-Second Demo</title>
+  <style>
+    :root {
+      --bg: #071119;
+      --panel: #0d1822;
+      --panel-2: #122230;
+      --line: #24394a;
+      --text: #eef5f9;
+      --muted: #9db2bf;
+      --green: #39e5a8;
+      --green-soft: rgba(57, 229, 168, 0.14);
+      --blue: #4da5ff;
+      --blue-soft: rgba(77, 165, 255, 0.14);
+      --orange: #ffb86b;
+      --shadow: 0 28px 80px rgba(0, 0, 0, 0.28);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(77, 165, 255, 0.18), transparent 26%),
+        radial-gradient(circle at bottom right, rgba(57, 229, 168, 0.14), transparent 30%),
+        linear-gradient(180deg, #061019 0%, #040a10 100%);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    .wrap {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 40px 24px 48px;
+    }
+
+    .hero {
+      display: grid;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      width: fit-content;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(77, 165, 255, 0.18);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(40px, 6vw, 72px);
+      line-height: 0.98;
+      letter-spacing: 0;
+      max-width: 980px;
+    }
+
+    .sub {
+      max-width: 920px;
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(18px, 2.5vw, 24px);
+      line-height: 1.42;
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      appearance: none;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--text);
+      border-radius: 8px;
+      padding: 11px 14px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button.primary {
+      background: linear-gradient(180deg, #1e8cff 0%, #146ad8 100%);
+      border-color: rgba(77, 165, 255, 0.42);
+    }
+
+    .status {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .progress {
+      height: 8px;
+      width: min(100%, 720px);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+      margin-bottom: 22px;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--blue) 0%, var(--green) 100%);
+      transition: width 0.32s ease;
+    }
+
+    .stage {
+      display: grid;
+      grid-template-columns: 320px minmax(0, 1fr);
+      gap: 20px;
+      align-items: start;
+    }
+
+    .timeline,
+    .surface {
+      background: rgba(10, 18, 25, 0.88);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .timeline {
+      padding: 18px;
+      position: sticky;
+      top: 24px;
+    }
+
+    .timeline h2,
+    .surface h2 {
+      margin: 0 0 14px;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+
+    .steps {
+      display: grid;
+      gap: 10px;
+    }
+
+    .step {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px 12px 11px;
+      background: rgba(255, 255, 255, 0.02);
+      transition: border-color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+    }
+
+    .step.active {
+      border-color: rgba(77, 165, 255, 0.55);
+      background: var(--blue-soft);
+      transform: translateX(4px);
+    }
+
+    .step.done {
+      border-color: rgba(57, 229, 168, 0.32);
+      background: var(--green-soft);
+    }
+
+    .step-num {
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .step-title {
+      font-size: 16px;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+
+    .step-copy {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .surface {
+      padding: 18px;
+      min-height: 620px;
+    }
+
+    .caption {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: baseline;
+      margin-bottom: 16px;
+    }
+
+    .caption p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.42;
+    }
+
+    .scene {
+      display: none;
+      animation: fade 0.36s ease;
+    }
+
+    .scene.active {
+      display: block;
+    }
+
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .grid-2,
+    .grid-3 {
+      display: grid;
+      gap: 16px;
+    }
+
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+    .card,
+    .terminal,
+    .report,
+    .tracker {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .card {
+      padding: 16px;
+    }
+
+    .label {
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 17px;
+    }
+
+    .card p,
+    .card li,
+    .report li,
+    .tracker li {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    ul {
+      margin: 10px 0 0;
+      padding-left: 18px;
+    }
+
+    .terminal {
+      overflow: hidden;
+      margin-top: 12px;
+    }
+
+    .terminal-head {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.02);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #ff6058;
+      box-shadow: 15px 0 0 #ffbd2e, 30px 0 0 #28c840;
+      margin-right: 24px;
+    }
+
+    .terminal-body {
+      padding: 16px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 13px;
+      line-height: 1.52;
+      color: #d6e7f2;
+      min-height: 260px;
+      background: linear-gradient(180deg, #0a131b 0%, #081018 100%);
+    }
+
+    .prompt { color: var(--green); }
+    .output { color: #92b0c1; }
+    .good { color: var(--green); }
+    .warn { color: var(--orange); }
+
+    .metric {
+      font-size: 30px;
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 6px;
+      color: var(--green);
+    }
+
+    .report,
+    .tracker {
+      padding: 18px;
+    }
+
+    .tracker table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+      font-size: 13px;
+    }
+
+    .tracker th,
+    .tracker td {
+      text-align: left;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      color: var(--muted);
+    }
+
+    .tracker th {
+      color: #d7e7f0;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: var(--green-soft);
+      border: 1px solid rgba(57, 229, 168, 0.24);
+      color: #c8ffe6;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .foot {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.42;
+    }
+
+    @media (max-width: 980px) {
+      .stage {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline {
+        position: static;
+      }
+
+      .grid-2,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <div class="eyebrow">30-Second Demo</div>
+      <h1>See how Venture-Ops turns a deck and website into a fundraising workflow.</h1>
+      <p class="sub">This is a self-contained product walkthrough. It auto-plays through the founder flow: input company context, scan current-fit investors, refresh the deck story, and turn that into a tracker you can actually work from.</p>
+    </section>
+
+    <section class="controls">
+      <button class="primary" id="restartBtn">Restart Demo</button>
+      <button id="pauseBtn">Pause</button>
+      <span class="status" id="statusText">Auto-playing 6 scenes over ~30 seconds.</span>
+    </section>
+
+    <div class="progress" aria-hidden="true">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <section class="stage">
+      <aside class="timeline">
+        <h2>Walkthrough</h2>
+        <div class="steps" id="steps"></div>
+      </aside>
+
+      <section class="surface">
+        <div class="caption">
+          <h2 id="sceneTitle">Load the founder context</h2>
+          <p id="sceneTimer">Scene 1 of 6</p>
+        </div>
+
+        <article class="scene active" data-title="Load the founder context">
+          <div class="grid-2">
+            <div class="card">
+              <div class="label">Founder Inputs</div>
+              <h3>What the founder gives Venture-Ops</h3>
+              <ul>
+                <li>Current deck PDF</li>
+                <li>Startup front page</li>
+                <li>Founder background and credibility</li>
+                <li>Raise target, geography, and current round</li>
+              </ul>
+            </div>
+            <div class="card">
+              <div class="label">Durable Files</div>
+              <h3>Private memory stays structured</h3>
+              <ul>
+                <li><code>startup.md</code></li>
+                <li><code>founder-bio.md</code></li>
+                <li><code>traction-digest.md</code></li>
+                <li><code>market-watch.md</code></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="terminal">
+            <div class="terminal-head"><span class="dot"></span>Founder setup</div>
+            <div class="terminal-body">
+              <div><span class="prompt">$</span> npm run doctor</div>
+              <div class="output">OK: startup.md exists</div>
+              <div class="output">OK: founder-bio.md exists</div>
+              <div class="output">OK: traction-digest.md exists</div>
+              <div class="output">OK: investors.yml exists</div>
+              <div class="good">Venture-Ops doctor complete.</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="scene" data-title="Configure the target profile">
+          <div class="grid-3">
+            <div class="card">
+              <div class="metric">Pre-seed</div>
+              <p>Stage and round are explicit instead of buried in notes.</p>
+            </div>
+            <div class="card">
+              <div class="metric">Europe</div>
+              <p>Geography filters narrow the investor universe fast.</p>
+            </div>
+            <div class="card">
+              <div class="metric">AI / Devtools</div>
+              <p>Sector framing shapes the fit score before any outreach starts.</p>
+            </div>
+          </div>
+
+          <div class="terminal">
+            <div class="terminal-head"><span class="dot"></span>Profile</div>
+            <div class="terminal-body">
+              <div><span class="prompt">$</span> cat config/profile.yml</div>
+              <div class="output">startup: QualityMax</div>
+              <div class="output">stage: pre-seed</div>
+              <div class="output">raise_target_eur: 500000</div>
+              <div class="output">geography: Europe</div>
+              <div class="output">sectors: [ai, developer tools, security, testing]</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="scene" data-title="Scan for current-fit investors">
+          <div class="grid-3">
+            <div class="card">
+              <div class="label">Top Fit</div>
+              <h3>Crane Venture Partners</h3>
+              <p>Foundational technology, infra, developer tooling.</p>
+            </div>
+            <div class="card">
+              <div class="label">Top Fit</div>
+              <h3>Episode 1</h3>
+              <p>Clear early-stage B2B software fit and simple path to send.</p>
+            </div>
+            <div class="card">
+              <div class="label">Top Fit</div>
+              <h3>Point Nine</h3>
+              <p>AI-native software framing with product-led platform upside.</p>
+            </div>
+          </div>
+
+          <div class="terminal">
+            <div class="terminal-head"><span class="dot"></span>Investor scan</div>
+            <div class="terminal-body">
+              <div><span class="prompt">$</span> npm run scan -- --dry-run</div>
+              <div class="output">Matched 8 targets</div>
+              <div class="good">1. Crane Venture Partners</div>
+              <div class="good">2. Episode 1</div>
+              <div class="good">3. Point Nine</div>
+              <div class="output">4. Seedcamp</div>
+              <div class="output">5. Playfair</div>
+              <div class="warn">Suggestion: prioritize the top 3 before broad outreach.</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="scene" data-title="Refresh the deck against the website">
+          <div class="grid-2">
+            <div class="report">
+              <div class="label">Refresh audit</div>
+              <h3>What the system flags</h3>
+              <ul>
+                <li>Website story evolved beyond the old deck</li>
+                <li>Some public claims need canonical numbers</li>
+                <li>Commercial proof stronger on site than in slides</li>
+                <li>Founder needs to confirm investor-safe metrics</li>
+              </ul>
+            </div>
+            <div class="report">
+              <div class="label">Founder questions</div>
+              <h3>What it asks before investor send</h3>
+              <ul>
+                <li>What is the current raise and open allocation?</li>
+                <li>Which customer names are referenceable?</li>
+                <li>What revenue framing is accurate today?</li>
+                <li>Which slides need appendix-only claims?</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="scene" data-title="Generate target-specific decks">
+          <div class="grid-3">
+            <div class="card">
+              <div class="label">Crane</div>
+              <h3>Infrastructure frame</h3>
+              <p>Verification infrastructure for AI-built software.</p>
+            </div>
+            <div class="card">
+              <div class="label">Episode 1</div>
+              <h3>B2B software frame</h3>
+              <p>Simple early-stage execution and clear commercial path.</p>
+            </div>
+            <div class="card">
+              <div class="label">Point Nine</div>
+              <h3>Platform frame</h3>
+              <p>AI-native software platform with product-led upside.</p>
+            </div>
+          </div>
+
+          <div class="terminal">
+            <div class="terminal-head"><span class="dot"></span>Deck variants</div>
+            <div class="terminal-body">
+              <div><span class="prompt">$</span> node scripts/qualitymax-deck-variants.mjs output/base.html output/</div>
+              <div class="good">Wrote qualitymax-deck-master-2026-04-24.html</div>
+              <div class="good">Wrote qualitymax-deck-crane-2026-04-24.html</div>
+              <div class="good">Wrote qualitymax-deck-episode1-2026-04-24.html</div>
+              <div class="good">Wrote qualitymax-deck-pointnine-2026-04-24.html</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="scene" data-title="Turn it into a workflow you can use">
+          <div class="tracker">
+            <div class="label">Tracker Output</div>
+            <h3>What the founder actually works from next</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>Target</th>
+                  <th>Fit</th>
+                  <th>Status</th>
+                  <th>Next step</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Crane</td>
+                  <td>4.8 / 5</td>
+                  <td><span class="badge">Prepare</span></td>
+                  <td>Send Crane deck + short note</td>
+                </tr>
+                <tr>
+                  <td>Episode 1</td>
+                  <td>4.7 / 5</td>
+                  <td><span class="badge">Prepare</span></td>
+                  <td>Submit deck form</td>
+                </tr>
+                <tr>
+                  <td>Point Nine</td>
+                  <td>4.6 / 5</td>
+                  <td><span class="badge">Intro Needed</span></td>
+                  <td>Find warm intro to partner</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p class="foot">The point of Venture-Ops is not to make fundraising noisier. It is to help founders show up better prepared, with fewer stale claims, fewer wasted targets, and a tighter narrative.</p>
+        </article>
+      </section>
+    </section>
+  </main>
+
+  <script>
+    const scenes = Array.from(document.querySelectorAll('.scene'));
+    const stepsRoot = document.getElementById('steps');
+    const sceneTitle = document.getElementById('sceneTitle');
+    const sceneTimer = document.getElementById('sceneTimer');
+    const progressBar = document.getElementById('progressBar');
+    const statusText = document.getElementById('statusText');
+    const restartBtn = document.getElementById('restartBtn');
+    const pauseBtn = document.getElementById('pauseBtn');
+
+    const stepMeta = [
+      {
+        title: 'Load founder context',
+        copy: 'Deck, website, traction, and founder notes become structured inputs.'
+      },
+      {
+        title: 'Configure target profile',
+        copy: 'Stage, geography, and sector keep the scan grounded in reality.'
+      },
+      {
+        title: 'Scan current-fit investors',
+        copy: 'The tool narrows the investor field before you write to anyone.'
+      },
+      {
+        title: 'Refresh the deck story',
+        copy: 'It compares your deck and website and flags what is stale or missing.'
+      },
+      {
+        title: 'Generate investor variants',
+        copy: 'The same core story gets lightly tailored for the right audience.'
+      },
+      {
+        title: 'Work from a tracker',
+        copy: 'You end up with concrete next steps, not another loose note.'
+      }
+    ];
+
+    const durationMs = 30000;
+    const sceneDuration = durationMs / scenes.length;
+    let current = 0;
+    let playing = true;
+    let intervalId = null;
+    let startedAt = Date.now();
+    let pausedElapsed = 0;
+
+    stepMeta.forEach((step, index) => {
+      const el = document.createElement('div');
+      el.className = 'step';
+      el.innerHTML = `
+        <div class="step-num">Step ${index + 1}</div>
+        <div class="step-title">${step.title}</div>
+        <div class="step-copy">${step.copy}</div>
+      `;
+      el.addEventListener('click', () => {
+        current = index;
+        startedAt = Date.now() - current * sceneDuration;
+        pausedElapsed = current * sceneDuration;
+        render();
+      });
+      stepsRoot.appendChild(el);
+    });
+
+    function render() {
+      scenes.forEach((scene, index) => {
+        scene.classList.toggle('active', index === current);
+      });
+
+      Array.from(stepsRoot.children).forEach((step, index) => {
+        step.classList.toggle('active', index === current);
+        step.classList.toggle('done', index < current);
+      });
+
+      sceneTitle.textContent = scenes[current].dataset.title;
+      sceneTimer.textContent = `Scene ${current + 1} of ${scenes.length}`;
+    }
+
+    function updateProgress() {
+      const elapsed = playing ? Date.now() - startedAt : pausedElapsed;
+      const normalized = Math.min(100, Math.max(0, (elapsed / durationMs) * 100));
+      progressBar.style.width = `${normalized}%`;
+
+      const nextIndex = Math.min(scenes.length - 1, Math.floor(elapsed / sceneDuration));
+      if (nextIndex !== current) {
+        current = nextIndex;
+        render();
+      }
+
+      if (elapsed >= durationMs) {
+        startedAt = Date.now();
+        pausedElapsed = 0;
+        current = 0;
+        render();
+      }
+    }
+
+    function play() {
+      playing = true;
+      startedAt = Date.now() - pausedElapsed;
+      pauseBtn.textContent = 'Pause';
+      statusText.textContent = 'Auto-playing 6 scenes over ~30 seconds.';
+      if (!intervalId) {
+        intervalId = setInterval(updateProgress, 120);
+      }
+    }
+
+    function pause() {
+      playing = false;
+      pausedElapsed = Date.now() - startedAt;
+      pauseBtn.textContent = 'Resume';
+      statusText.textContent = 'Paused. Click Resume or jump to any step on the left.';
+      clearInterval(intervalId);
+      intervalId = null;
+    }
+
+    restartBtn.addEventListener('click', () => {
+      current = 0;
+      pausedElapsed = 0;
+      startedAt = Date.now();
+      render();
+      play();
+    });
+
+    pauseBtn.addEventListener('click', () => {
+      if (playing) pause();
+      else play();
+    });
+
+    render();
+    play();
+  </script>
+</body>
+</html>

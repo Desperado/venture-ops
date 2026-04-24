@@ -12,6 +12,54 @@ Instead of juggling old decks, scattered investor notes, and generic application
 
 > **Important:** Venture-Ops is not an investor-spam bot. It is a sharpening system. It helps founders choose better targets, tighten the story, and prepare better materials. The founder still decides what gets sent.
 
+## 30-Second Demo
+
+GitHub strips interactive HTML from READMEs, so the live walkthrough sits in a standalone page:
+
+- [Open the 30-second HTML demo](docs/30-sec-demo.html)
+
+It shows the actual founder flow: load startup context, scan current-fit investors, refresh the deck against the website, generate target-specific deck variants, and work from a tracker instead of loose notes.
+
+## Full Demo Walkthrough
+
+You can also understand the whole product directly in the README:
+
+### 1. Load founder context
+
+![Demo step 1: founder context](assets/readme/demo-step-1-context.png)
+
+Start with the files founders already have: deck, website, founder background, traction notes, and raise profile.
+
+### 2. Configure the target profile
+
+![Demo step 2: target profile](assets/readme/demo-step-2-profile.png)
+
+Venture-Ops turns stage, geography, and category framing into explicit filters before any outreach starts.
+
+### 3. Scan current-fit investors
+
+![Demo step 3: investor scan](assets/readme/demo-step-3-scan.png)
+
+Instead of a broad list, the scanner narrows the field into a small shortlist with reasons.
+
+### 4. Refresh the deck against the website
+
+![Demo step 4: refresh audit](assets/readme/demo-step-4-refresh.png)
+
+The refresh loop surfaces drift, stale claims, and the founder questions that should be answered before sending materials.
+
+### 5. Generate target-specific decks
+
+![Demo step 5: deck variants](assets/readme/demo-step-5-decks.png)
+
+One shared company story can be lightly reframed for firms like Crane, Episode 1, and Point Nine without rebuilding the whole deck from zero.
+
+### 6. Work from a tracker
+
+![Demo step 6: tracker workflow](assets/readme/demo-step-6-tracker.png)
+
+The end state is a workflow: who fits, what gets sent next, and where the round stands.
+
 ## At A Glance
 
 ![Venture-Ops overview](assets/readme/venture-ops-overview.png)
