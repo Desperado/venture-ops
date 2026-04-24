@@ -1,7 +1,7 @@
 {
   "name": "venture-ops",
   "version": "0.1.0",
-  "description": "AI-powered fundraising pipeline for pitch decks, investor discovery, accelerator applications, and VC outreach",
+  "description": "AI fundraising command center for investor discovery, pitch deck refresh, accelerator applications, and founder-side fundraising ops",
   "type": "module",
   "scripts": {
     "doctor": "node doctor.mjs",
