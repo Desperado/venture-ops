@@ -16,7 +16,7 @@ Instead of juggling old decks, scattered investor notes, and generic application
 
 GitHub strips interactive HTML from READMEs, so the live walkthrough sits in a standalone page:
 
-- [Open the 30-second HTML demo](docs/30-sec-demo.html)
+- [Open the live 30-second demo](https://desperado.github.io/venture-ops/30-sec-demo.html)
 
 It shows the actual founder flow: load startup context, scan current-fit investors, refresh the deck against the website, generate target-specific deck variants, and work from a tracker instead of loose notes.
 
