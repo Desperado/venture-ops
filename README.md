@@ -1,5 +1,11 @@
 # Venture-Ops
 
+> AI-powered fundraising ops built on Claude Code. Skill modes for investor scanning, pitch-deck refresh, accelerator applications, and follow-up cadence. Batch processing, PDF generation.
+
+*Inspired by [santifer/career-ops](https://github.com/santifer/career-ops) — adapted for founders raising rounds.*
+
+---
+
 Venture-Ops is an AI fundraising command center for founders: investor discovery, pitch-deck refresh, application drafting, pipeline tracking, and market-aware fundraising ops.
 
 Instead of juggling old decks, scattered investor notes, and generic applications, you get one structured system that helps you:
