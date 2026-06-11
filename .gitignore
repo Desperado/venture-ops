@@ -6,10 +6,8 @@ founder-bio.md
 traction-digest.md
 market-watch.md
 investors.yml
-data/targets.md
-data/pipeline.md
-data/scan-history.tsv
-data/follow-ups.md
+data/*
+!data/.gitkeep
 reports/*.md
 !reports/.gitkeep
 output/*

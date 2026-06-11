@@ -20,6 +20,7 @@ There are two layers.
 ## What Venture-Ops Does
 
 - Scores investor and accelerator fit with structured criteria.
+- Maps non-dilutive funding (grants, defense/dual-use, corporate) and scores eligibility before drafting applications.
 - Generates tailored deck outlines, HTML decks, PDFs, one-pagers, and investor memos.
 - Compares existing deck content against the startup front page and recent updates, then flags drift and missing proof.
 - Scans a configured investor universe without spending LLM tokens.
@@ -63,6 +64,7 @@ Ask for missing essentials in plain language:
 | Process inbox | `modes/_shared.md` + `modes/pipeline.md` |
 | Compare targets | `modes/_shared.md` + `modes/compare.md` |
 | Accelerator review | `modes/_shared.md` + `modes/accelerator.md` |
+| Grants / non-dilutive funding | `modes/_shared.md` + `modes/grants.md` |
 | Tracker status | `modes/tracker.md` |
 | Deep research | `modes/deep.md` |
 | Follow-up cadence | `modes/followup.md` |

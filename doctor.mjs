@@ -54,4 +54,14 @@ for (const file of ['startup.md', 'founder-bio.md', 'traction-digest.md', 'marke
   existsSync(file) ? ok(`${file} exists`) : warn(`${file} missing`);
 }
 
+// Deck/PDF generation (generate-deck.mjs) needs a Chromium build for Playwright.
+try {
+  const { chromium } = await import('playwright');
+  existsSync(chromium.executablePath())
+    ? ok('Playwright Chromium installed')
+    : warn('Playwright Chromium missing; run: npx playwright install chromium');
+} catch {
+  warn('Playwright not available; run "npm install" then "npx playwright install chromium" to generate deck PDFs.');
+}
+
 console.log('Venture-Ops doctor complete.');
